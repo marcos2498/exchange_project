@@ -1,0 +1,18 @@
+React files
+
+*Public
+    |--- index.html - main HTML file that gets served by my web server
+    |--- mainfest.json - this file provides metadata such as name of the app
+    |--- favicon.ico - the small icon that appears in the browser tab
+    |--- robots.txt - sets page permissions for web crawlers 
+
+*SRC
+    |--- index.js - entry point for my react app. It imports React and ReactDOM and uses ReactDOM.render to mount the root component (App) into the root element in index.html.
+    |--- App.js - main component of react applications. renders JSX content. for user interactions
+        *<code> is used to clarify files for the reader of the code. It has no affect on the actual website
+    |--- App.css - contains all the styles for the App
+    |--- index.css - contains all the global styles for my application
+
+General
+*everytime I want to add a button I would have to make a js file to describe what happens when it is clicked on. Then 
+I would need to include it in my App.css. 

@@ -1,1 +1,12 @@
+
+7/21/2024
+*I had my /build folder in my git ignore which cause my components not to flow through 
 *Not using the correct python version for aws eb and heroku
+*Able to succesfully put my full stack website through heroku 
+
+7/22/2024
+
+
+
+Timeline
+*Research React syntax and what all the files does. Goal create black background with just one button - 6 hours 
