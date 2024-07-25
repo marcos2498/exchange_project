@@ -19,7 +19,7 @@ function App() {
         <SearchButton />
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.linkedin.com/in/marcos-rivera-b50/"
           target="_blank"
           rel="noopener noreferrer"
         >

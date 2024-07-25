@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'data',
 ]
 
 MIDDLEWARE = [
@@ -67,9 +68,7 @@ WSGI_APPLICATION = 'Mysite.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default': {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600)
     }
 }
 

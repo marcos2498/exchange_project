@@ -1,12 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
+import '../App.css';
 
 function AddButton() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [unit, setUnit] = useState('');
+
   const handleClick = () => {
-    alert('Add Button Clicked!');
+    setShowPopup(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/api/add_commodity/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, description, price, unit }),
+    });
+    if (response.ok) {
+      // Handle successful addition
+      alert('Commodity added successfully!');
+      setShowPopup(false);
+      setName('');
+      setDescription('');
+      setPrice('');
+      setUnit('');
+    } else {
+      // Handle error
+      alert('Error adding commodity');
+    }
   };
 
   return (
-    <button onClick={handleClick}>Add</button>
+    <div>
+      <button onClick={handleClick}>Add</button>
+      {showPopup && (
+        <div className="popup">
+          <form onSubmit={handleSubmit}>
+            <label>
+              Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              Description:
+              <input
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </label>
+            <label>
+              Price:
+              <input
+                type="number"
+                step="0.01"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </label>
+            <label>
+              Unit:
+              <input
+                type="text"
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+          <button onClick={() => setShowPopup(false)}>Close</button>
+        </div>
+      )}
+    </div>
   );
 }
 

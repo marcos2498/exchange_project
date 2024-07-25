@@ -5,8 +5,15 @@
 *Able to succesfully put my full stack website through heroku 
 
 7/22/2024
+*built out 4 buttons (interface only)
 
-
-
+7/23/2024 
+*goal - add postgresql
+added postgresql but the communication to the database isnt accurate 
+7/24/2024 
+*was able to submit data to database but heroku uses its own data base which mean I had to change my settings.
 Timeline
 *Research React syntax and what all the files does. Goal create black background with just one button - 6 hours 
+-> took only 2 hours and got all 4 created
+
+*Add postgresql to project and then add functionality to button to get it to load the data base. 
