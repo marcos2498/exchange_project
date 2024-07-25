@@ -12,6 +12,7 @@
 added postgresql but the communication to the database isnt accurate 
 7/24/2024 
 *was able to submit data to database but heroku uses its own data base which mean I had to change my settings.
+*succesfully connected my add button to my heroku database 
 Timeline
 *Research React syntax and what all the files does. Goal create black background with just one button - 6 hours 
 -> took only 2 hours and got all 4 created
