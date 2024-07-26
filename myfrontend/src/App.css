@@ -72,14 +72,37 @@ button:hover {
 
 .popup {
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(0, 0, 0);
-  border: 1px solid black;
-  padding: 10000px;
+  border: 1px solid rgb(73, 192, 26);
+  padding: 50px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensures the popup is on top */
+  border-radius: 15px;
+}
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup form label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: rgb(73, 192, 26); /* Add color for better visibility */
+}
+
+.popup form input {
+  width: 100%;
+  padding: 5px;
+  margin-left: 10px; /* Add margin to separate the input from the label */
+}
+
+.popup form button[type="submit"] {
+  margin-top: 20px;
 }
 
 .popup button {

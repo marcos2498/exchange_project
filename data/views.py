@@ -26,3 +26,10 @@ def add_commodity(request):
         else:
             return JsonResponse({'status': 'error', 'message': 'All fields are required'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+
+def get_list(request):
+    securities = Commodity.objects.all()[:20]
+    data = list(securities.values('name', 'description', 'price', 'unit'))
+    return JsonResponse(data,safe=False)
+
