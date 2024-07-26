@@ -17,7 +17,7 @@ def add_commodity(request):
         description = data.get('description')
         price = data.get('price')
         unit = data.get('unit')
-        
+      
         if name and description and price and unit:
             # Save the commodity to the database
             commodity = Commodity(name=name, description=description, price=price, unit=unit)
@@ -27,9 +27,8 @@ def add_commodity(request):
             return JsonResponse({'status': 'error', 'message': 'All fields are required'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
-
+@csrf_exempt
 def get_list(request):
     securities = Commodity.objects.all()[:20]
     data = list(securities.values('name', 'description', 'price', 'unit'))
-    return JsonResponse(data,safe=False)
-
+    return JsonResponse(data, safe=False)

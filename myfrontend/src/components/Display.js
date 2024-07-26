@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 function DisplayButton() {
@@ -9,18 +10,11 @@ function DisplayButton() {
   const handleClick = async () => {
     setShowPopup(true);
     try {
-      const response = await fetch('/api/get_commodity/');
-      
-      if (response.ok) {
-        const result = await response.json();
-        setData(result);
-        setError('');
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'An error occurred while fetching data.');
-      }
+      const response = await axios.get('/api/get_list/');
+      setData(response.data);
+      setError('');
     } catch (error) {
-      setError('Network error. Please try again later.');
+      setError(error.response?.data?.message || 'Network error. Please try again later.');
     }
   };
 
@@ -34,10 +28,14 @@ function DisplayButton() {
           {data ? (
             <div>
               <h2>Commodity Details</h2>
-              <p>Name: {data.name}</p>
-              <p>Description: {data.description}</p>
-              <p>Price: ${data.price}</p>
-              <p>Unit: {data.unit}</p>
+              {data.map((item, index) => (
+                <div key={index}>
+                  <p>Name: {item.name}</p>
+                  <p>Description: {item.description}</p>
+                  <p>Price: ${item.price}</p>
+                  <p>Unit: {item.unit}</p>
+                </div>
+              ))}
             </div>
           ) : (
             <p>Loading...</p>
