@@ -9,7 +9,7 @@ function SearchButton() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('/api/search_commodity', {
+    const response = await fetch('/api/search_commodity/', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
