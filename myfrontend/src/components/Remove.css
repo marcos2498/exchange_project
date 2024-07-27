@@ -1,5 +1,5 @@
 /* added a wrapper around my popup because I wanted to account for more text in the popup */
-.display-popup {
+.remove-popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -11,7 +11,7 @@
   }
   
   /* Popup styling inside the wrapper */
-  .display-popup .popup {
+  .remove-popup .popup {
     background-color: rgb(0, 0, 0);
     border: 2px solid rgb(28, 136, 0);
     font-size: 30px;
@@ -25,13 +25,13 @@
   }
   
   /* Form inside the popup */
-  .display-popup .popup form {
+  .remove-popup .popup form {
     display: flex;
     flex-direction: column;
   }
   
   /* Form label styling */
-  .display-popup .popup form label {
+  .remove-popup .popup form label {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -39,20 +39,18 @@
   }
   
   /* Form input styling */
-  .display-popup .popup form input {
+  .remove-popup .popup form input {
     width: 100%;
     padding: 5px;
     margin-left: 10px;
   }
   
   /* Submit button styling in form */
-  .display-popup .popup form button[type="submit"] {
+  .remove-popup .popup form button[type="submit"] {
     margin-top: 20px;
   }
   
   /* General button styling inside the popup */
-  .display-popup .popup button {
+  .remove-popup .popup button {
     margin-top: 10px;
   }
-
-  

@@ -16,3 +16,5 @@ React files
 General
 *everytime I want to add a button I would have to make a js file to describe what happens when it is clicked on. Then 
 I would need to include it in my App.css. 
+*e.preventDefault() prevent the submit button from going to a new page automatically
+*<div> element is a container element that groups other elements together. It has several key uses and characteristics

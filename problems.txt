@@ -17,4 +17,7 @@ Timeline
 *Research React syntax and what all the files does. Goal create black background with just one button - 6 hours 
 -> took only 2 hours and got all 4 created
 
+7/26/2024 
+*struggled trying to seperate a new styling for a display button. 1 hour later div class name is what determines where it gets the styling from the css sheet. 
+
 *Add postgresql to project and then add functionality to button to get it to load the data base. 

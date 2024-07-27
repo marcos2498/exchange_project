@@ -32,3 +32,29 @@ def get_list(request):
     securities = Commodity.objects.all()[:20]
     data = list(securities.values('name', 'description', 'price', 'unit'))
     return JsonResponse(data, safe=False)
+
+def remove_commodity(request):
+    if request.method == 'POST':
+        try:
+            # Load JSON data from the request body
+            data = json.loads(request.body)
+            name = data.get('name')
+            
+            if not name:
+                return JsonResponse({'error': 'Name is required'}, status=400)
+
+            # Find the commodity by name
+            commodity = Commodity.objects.filter(name=name).first()
+
+            if not commodity:
+                return JsonResponse({'error': 'Commodity not found'}, status=404)
+
+            # Delete the commodity
+            commodity.delete()
+
+            return JsonResponse({'success': 'Commodity removed successfully'}, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
