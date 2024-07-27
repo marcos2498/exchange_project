@@ -14,7 +14,7 @@ function RemoveButton() {
     const response = await fetch('/api/remove_commodity', {
       method: 'POST',
       headers: {
-        'Content-Type': 'applicatio/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name }),
     });
