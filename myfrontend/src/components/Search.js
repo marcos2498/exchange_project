@@ -3,6 +3,10 @@ import './Search.css'
 function SearchButton() {
   const[searchPopup, setSearchPopup] = useState(false)
   const[name, setSearchname] = useState('')
+  const[detailsPopup, setDetailsPopup] = useState(false)
+  const [commodity, setCommodity] = useState(null);
+
+
   const handleClick = () => {
     setSearchPopup(true);
   };
@@ -18,11 +22,13 @@ function SearchButton() {
     });
 
     if (response.ok) {
-      alert('Search sucessful');
+      const result = await response.json();
+      setCommodity(result.commodity);
       setSearchPopup(false);
+      setDetailsPopup(true);
       setSearchname('');
     } else {
-      alert('Error could not search')
+      alert('Error could not search');
     }
   };
 
@@ -32,7 +38,7 @@ function SearchButton() {
       <button onClick={handleClick}>Search</button>
       {searchPopup && (
         <div className="search-popup">
-          <div className="popup"> {/* Add this div with the className "popup" */}
+          <div className="popup">
             <form onSubmit={handleSubmit}>
               <label>
                 Name:
@@ -46,6 +52,18 @@ function SearchButton() {
               <button type="submit">Submit</button>
               <button type="button" onClick={() => setSearchPopup(false)}>Cancel</button>
             </form>
+          </div>
+        </div>
+      )}
+      {detailsPopup && commodity && (
+        <div className="details-popup">
+          <div className="popup">
+            <h2>Commodity Details</h2>
+            <p><strong>Name:</strong> {commodity.name}</p>
+            <p><strong>Description:</strong> {commodity.description}</p>
+            <p><strong>Price:</strong> ${commodity.price}</p>
+            <p><strong>Unit:</strong> {commodity.unit}</p>
+            <button onClick={() => setDetailsPopup(false)}>Close</button>
           </div>
         </div>
       )}
