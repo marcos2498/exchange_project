@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../App.css';
+import './Display.css';
 
 function DisplayButton() {
-  const [showPopup, setShowPopup] = useState(false);
+  const [displaypopup, setdisplaypopup] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
 
   const handleClick = async () => {
-    setShowPopup(true);
+    setdisplaypopup(true);
     try {
       const response = await axios.get('/api/get_list/');
       setData(response.data);
@@ -21,25 +21,27 @@ function DisplayButton() {
   return (
     <div>
       <button onClick={handleClick}>Display</button>
-      {showPopup && (
-        <div className="popup">
-          <button onClick={() => setShowPopup(false)}>Close</button>
-          {error && <p className="error">{error}</p>}
-          {data ? (
-            <div>
-              <h2>Commodity Details</h2>
-              {data.map((item, index) => (
-                <div key={index}>
-                  <p>Name: {item.name}</p>
-                  <p>Description: {item.description}</p>
-                  <p>Price: ${item.price}</p>
-                  <p>Unit: {item.unit}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>Loading...</p>
-          )}
+      {displaypopup && (
+        <div className="display-popup">
+          <div className="popup">
+            <button onClick={() => setdisplaypopup(false)}>Close</button>
+            {error && <p className="error">{error}</p>}
+            {data ? (
+              <div>
+                <h2>Commodity Details</h2>
+                {data.map((item, index) => (
+                  <div key={index}>
+                    <p>Name: {item.name}</p>
+                    <p>Description: {item.description}</p>
+                    <p>Price: ${item.price}</p>
+                    <p>Unit: {item.unit}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
         </div>
       )}
     </div>
