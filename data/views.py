@@ -33,6 +33,7 @@ def get_list(request):
     data = list(securities.values('name', 'description', 'price', 'unit'))
     return JsonResponse(data, safe=False)
 
+@csrf_exempt
 def remove_commodity(request):
     if request.method == 'POST':
         try:
