@@ -9,6 +9,7 @@ def index(request):
 
     return render(request, 'index.html')
 
+
 @csrf_exempt
 def add_commodity(request):
     if request.method == 'POST':
@@ -27,11 +28,13 @@ def add_commodity(request):
             return JsonResponse({'status': 'error', 'message': 'All fields are required'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
+
 @csrf_exempt
 def get_list(request):
     securities = Commodity.objects.all()[:20]
     data = list(securities.values('name', 'description', 'price', 'unit'))
     return JsonResponse(data, safe=False)
+
 
 @csrf_exempt
 def remove_commodity(request):
@@ -54,6 +57,38 @@ def remove_commodity(request):
             commodity.delete()
 
             return JsonResponse({'success': 'Commodity removed successfully'}, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+    
+@csrf_exempt
+def search_commodity(request):
+    if request.method == 'POST':
+        try:
+            # Load JSON data from the request body
+            data = json.loads(request.body)
+            name = data.get('name')
+            
+            if not name:
+                return JsonResponse({'error': 'Name is required'}, status=400)
+
+            # Find the commodity by name
+            commodity = Commodity.objects.filter(name=name).first()
+
+            if not commodity:
+                return JsonResponse({'error': 'Commodity not found'}, status=404)
+
+            commodity_data = {
+                'name': commodity.name,
+                'description': commodity.description,
+                'price': commodity.price,
+                'unit': commodity.unit,
+            }
+
+            return JsonResponse({'commodity': commodity_data}, status=200)
 
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)

@@ -19,5 +19,13 @@ Timeline
 
 7/26/2024 
 *struggled trying to seperate a new styling for a display button. 1 hour later div class name is what determines where it gets the styling from the css sheet. 
-
+*finished display button but still need to fix remove button.
 *Add postgresql to project and then add functionality to button to get it to load the data base. 
+7/27/2024
+*remove button wasnt working because I had an extra slash 
+
+
+
+
+Bugs to fix
+*user adding a repeated security
