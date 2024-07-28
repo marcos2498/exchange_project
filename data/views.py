@@ -34,9 +34,9 @@ def get_list(request):
     filter_type = request.GET.get('type', None)
 
     if filter_type == 'commodity':
-        securities = Commodity.objects.filter(description='Commodity')[:20]
+        securities = Commodity.objects.filter(description='commodity')[:20]
     elif filter_type == 'fx':
-        securities = Commodity.objects.filter(description='Commodity')[:20]
+        securities = Commodity.objects.filter(description='fx')[:20]
     else:
         securities = Commodity.objects.all()[:20]
 
