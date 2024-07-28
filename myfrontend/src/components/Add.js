@@ -52,11 +52,15 @@ function AddButton() {
             </label>
             <label>
               Description:
-              <input
-                type="text"
+              <select
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-              />
+                required
+                >
+                  <option value="">Select one</option>
+                  <option value="commodity">Commodity</option>
+                  <option value="fx">FX</option>
+                </select>
             </label>
             <label>
               Price:
