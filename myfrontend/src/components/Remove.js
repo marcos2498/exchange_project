@@ -11,7 +11,7 @@ function RemoveButton() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const response = await fetch('/api/remove_commodity', {
+    const response = await fetch('/api/remove_commodity/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -31,7 +31,15 @@ def add_commodity(request):
 
 @csrf_exempt
 def get_list(request):
-    securities = Commodity.objects.all()[:20]
+    filter_type = request.GET.get('type', None)
+
+    if filter_type == 'commodity':
+        securities = Commodity.objects.filter(description='Commodity')[:20]
+    elif filter_type == 'fx':
+        securities = Commodity.objects.filter(description='Commodity')[:20]
+    else:
+        securities = Commodity.objects.all()[:20]
+
     data = list(securities.values('name', 'description', 'price', 'unit'))
     return JsonResponse(data, safe=False)
 

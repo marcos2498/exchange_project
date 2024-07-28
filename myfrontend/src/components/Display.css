@@ -55,4 +55,66 @@
     margin-top: 10px;
   }
 
+  .filter-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 70%; /* Adjust width if needed */
+    max-width: 500px; /* Optional max-width */
+    max-height: 500px;
+  }
+  
+  /* Popup styling inside the wrapper */
+  .filter-popup .popup {
+    background-color: #000000; /* White background */
+    border: 2px solid rgb(73, 192, 26); /* Blue border */
+    font-size: 18px; /* Adjust font size if needed */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    min-height: 150px;
+    max-height: 100%; /* Adjust to fit the content */
+  }
+  
+  /* Form inside the popup */
+  .filter-popup .popup form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Form label styling */
+  .filter-popup .popup form .button-container {
+    display: flex;
+    justify-content: flex-end; /* Adjusts the spacing between buttons */
+    margin-top: 40px;
+    gap: 10px;
+  }
+  
+  .filter-popup .popup form button {
+    margin: 0 2px; /* Optional spacing between buttons */
+  }
+  
+  /* Submit button styling in form */
+  .filter-popup .popup form button[type="submit"] {
+    margin-top: 0px;
+  }
+  
+  /* General button styling inside the popup */
+  .filter-popup .popup button {
+    margin-top: 10px;
+    background-color: #000000; /* Blue button */
+    color: #fff; /* White text */
+    border: 2px solid rgb(73, 192, 26);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-popup .popup button:hover {
+    background-color: rgb(73, 192, 26); /* Darker blue on hover */
+  }
+
   

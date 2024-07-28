@@ -3,14 +3,24 @@ import axios from 'axios';
 import './Display.css';
 
 function DisplayButton() {
-  const [displaypopup, setdisplaypopup] = useState(false);
+  const [filterPopup, setFilterPopup] = useState(false);
+  const [displayPopup, setDisplayPopup] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
+  const [filterType, setFilterType] = useState('');
 
-  const handleClick = async () => {
-    setdisplaypopup(true);
+  const handleFilterClick = () => {
+    setFilterPopup(true);
+  };
+
+  const handleFilterSubmit = async (e) => {
+    e.preventDefault();
+    // Use filterType to determine which data to fetch
+    setFilterPopup(false);
+    setDisplayPopup(true);
+
     try {
-      const response = await axios.get('/api/get_list/');
+      const response = await axios.get(`/api/get_list?type=${filterType}`);
       setData(response.data);
       setError('');
     } catch (error) {
@@ -20,11 +30,35 @@ function DisplayButton() {
 
   return (
     <div>
-      <button onClick={handleClick}>Display</button>
-      {displaypopup && (
+      <button onClick={handleFilterClick}>Display</button>
+      {filterPopup && (
+        <div className="filter-popup">
+          <div className="popup">
+            <form onSubmit={handleFilterSubmit}>
+              <label>
+                Choose Type:
+                <select
+                  value={filterType}
+                  onChange={(e) => setFilterType(e.target.value)}
+                  required
+                >
+                  <option value="">Select...</option>
+                  <option value="commodity">Commodity Exchange</option>
+                  <option value="fx">FX Exchange</option>
+                </select>
+              </label>
+              <div className="button-container">
+                <button type="button" onClick={() => setFilterPopup(false)}>Close</button>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {displayPopup && (
         <div className="display-popup">
           <div className="popup">
-            <button onClick={() => setdisplaypopup(false)}>Close</button>
+            <button onClick={() => setDisplayPopup(false)}>Close</button>
             {error && <p className="error">{error}</p>}
             {data ? (
               <div>
