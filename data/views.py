@@ -63,7 +63,7 @@ def remove_commodity(request):
                 return JsonResponse({'error': 'Name is required'}, status=400)
 
             # Find the commodity by name
-            commodity = Commodity.objects.filter(name=name).first()
+            commodity = Commodity.objects.filter(name__icontains=name).first()
 
             if not commodity:
                 return JsonResponse({'error': 'Commodity not found'}, status=404)
