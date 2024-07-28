@@ -45,6 +45,7 @@ function DisplayButton() {
                   <option value="">Select...</option>
                   <option value="commodity">Commodity Exchange</option>
                   <option value="fx">FX Exchange</option>
+                  <option value="none">All</option>
                 </select>
               </label>
               <div className="button-container">
@@ -62,7 +63,7 @@ function DisplayButton() {
             {error && <p className="error">{error}</p>}
             {data ? (
               <div>
-                <h2>Commodity Details</h2>
+                <h2>Security Details</h2>
                 {data.map((item, index) => (
                   <div key={index}>
                     <p>Name: {item.name}</p>
