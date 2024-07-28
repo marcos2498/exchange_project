@@ -22,7 +22,8 @@ Features
 # Usage 
 
 # Roadmap
-- [ ] Adding individual accounts 
+- [ ] Adding individual accounts
+- [ ] Approximate matching for search 
 # Contact info
 
 Marcos Rivera - marcosrivera2495@gmail.com
