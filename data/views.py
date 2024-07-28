@@ -18,14 +18,21 @@ def add_commodity(request):
         description = data.get('description')
         price = data.get('price')
         unit = data.get('unit')
-      
-        if name and description and price and unit:
-            # Save the commodity to the database
-            commodity = Commodity(name=name, description=description, price=price, unit=unit)
-            commodity.save()
-            return JsonResponse({'status': 'success', 'message': 'Commodity added'})
-        else:
+
+        # Check if all fields are present
+        if not all([name, description, price, unit]):
             return JsonResponse({'status': 'error', 'message': 'All fields are required'})
+
+        # Check if a commodity with the same name already exists
+        if Commodity.objects.filter(name=name).exists():
+            return JsonResponse({'status': 'error', 'message': 'Commodity with this name already exists'})
+        
+        # Save the commodity to the database if it does not exist
+        commodity = Commodity(name=name, description=description, price=price, unit=unit)
+        commodity.save()
+        
+        return JsonResponse({'status': 'success', 'message': 'Commodity added'})
+
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 

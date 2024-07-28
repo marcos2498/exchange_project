@@ -27,8 +27,8 @@ Timeline
 
 Remaining features to add (5 hours to complete)
 *styling for search popup 
-*add an extra pop up that asks the user wether they want a fx or a commodity. Then it will show just that DONE
-*add button to ask for fx or commodity exchange. 
+DONE --------------*add an extra pop up that asks the user wether they want a fx or a commodity. Then it will show just that DONE
+DONE *add button to ask for fx or commodity exchange. 
 *for add button I would need to prevent duplicates
 *partial matching for add / remove (only based on upper/lower case) and no duplicates can be added 
 *changes Unit to Unit/type 

@@ -18,3 +18,4 @@ General
 I would need to include it in my App.css. 
 *e.preventDefault() prevent the submit button from going to a new page automatically
 *<div> element is a container element that groups other elements together. It has several key uses and characteristics
+*input is for when you want to type something in and select is for when you have a dropdown 
