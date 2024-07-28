@@ -72,7 +72,7 @@ function AddButton() {
               />
             </label>
             <label>
-              Unit:
+              Unit/Type:
               <input
                 type="text"
                 value={unit}
