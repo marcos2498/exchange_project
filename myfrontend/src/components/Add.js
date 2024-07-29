@@ -13,7 +13,7 @@ function AddButton() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); //prevents form from submitting and causing a refresh
 
     const response = await fetch('/api/add_commodity/', {
       method: 'POST',

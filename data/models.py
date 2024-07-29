@@ -1,3 +1,5 @@
+#defines my data table on postgresql 
+
 from django.db import models
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render   # will allow me to render a template file
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse #converts response to json so it can be used by frontend
+from django.views.decorators.csrf import csrf_exempt #turns off token protection
 from .models import Commodity
 import json
 
@@ -13,8 +13,8 @@ def index(request):
 @csrf_exempt
 def add_commodity(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        name = data.get('name')
+        data = json.loads(request.body) # Converts JSON data from the request body into a Python dictionary.
+        name = data.get('name') #theres a difference between get which is a function and GET which is a request
         description = data.get('description')
         price = data.get('price')
         unit = data.get('unit')
@@ -48,7 +48,7 @@ def get_list(request):
         securities = Commodity.objects.all()[:20]
 
     data = list(securities.values('name', 'description', 'price', 'unit'))
-    return JsonResponse(data, safe=False)
+    return JsonResponse(data, safe=False) #allows json to accept non-dict objects. in this case it was a list 
 
 
 @csrf_exempt
@@ -60,9 +60,9 @@ def remove_commodity(request):
             name = data.get('name')
             
             if not name:
-                return JsonResponse({'error': 'Name is required'}, status=400)
+                return JsonResponse({'error': 'Name is required'}, status=400) #400 error code for bad request
 
-            # Find the commodity by name
+            # Find the commodity by name. icontains allows for upper or lower case to be accepted 
             commodity = Commodity.objects.filter(name__icontains=name).first()
 
             if not commodity:

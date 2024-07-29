@@ -1,7 +1,9 @@
 from django.test import TestCase
 from .models import Commodity
 
+
 class CommodityModelTests(TestCase):
+
     def setUp(self):
         # This method is used to set up any test data you need.
         Commodity.objects.create(name='Gold', description='Precious metal', price=1500.00, unit='ounce')

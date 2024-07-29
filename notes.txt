@@ -19,3 +19,7 @@ I would need to include it in my App.css.
 *e.preventDefault() prevent the submit button from going to a new page automatically
 *<div> element is a container element that groups other elements together. It has several key uses and characteristics
 *input is for when you want to type something in and select is for when you have a dropdown 
+*get request is used anytime you want to retrieve data without changing it. POST is used to send data
+to sever to create or update resources 
+WSGI (wsgi.py): Used for synchronous requests. Most traditional Django deployments use WSGI.
+ASGI (asgi.py): Used for asynchronous requests and additional protocols. It is suitable for modern, high-performance applications.
